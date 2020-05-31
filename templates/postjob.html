@@ -53,7 +53,7 @@
                         <div  class="col-lg-9 col-md-9">
                             <div>
                             </div>
-                            <div style="padding-left: 50%" class="menu-wrapper">
+                            <div style="padding-left: 12%" class="menu-wrapper">
                                 <!-- Main-menu -->
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
@@ -62,6 +62,37 @@
                                             <li><a href="/jobs">browse jobs</a></li>
                                             <li><a href="/postjob">post jobs</a></li>
                                             <li><a href="/about">about</a></li>
+                                            {% if current_user.is_authenticated %} {% else %}
+                                            <li>
+                                              <a
+                                              data-toggle="modal"
+                                              href="javascript:void(0)"
+                                              onclick="openRegisterModal();"
+                                              id="Reg"
+                                              ><span class="rounded bg-primary py-2 px-3 text-white"
+                                              >Company Register</span
+                                              ></a
+                                              >
+                                            </li>
+                                            {% endif %} {% if current_user.is_authenticated %}
+                                            <a href="/logout" id="Log">
+                                              <span class="rounded bg-dark py-2 px-3 text-white"
+                                              >Logout</span
+                                              >
+                                            </a>
+                                            {% else %}
+                                            <a
+                                            data-toggle="modal"
+                                            href="javascript:void(0)"
+                                            onclick="openLoginModal();"
+                                            id="Log"
+                                            >
+                                            <span class="rounded bg-dark py-2 px-3 text-white"
+                                            >Company Login</span
+                                            >
+                                            {% endif %}</a
+                                            >
+                                          </ul>
                                         </ul>
                                     </nav>
                                 </div>
@@ -71,6 +102,17 @@
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
+                        <div class="col-6 col-xl-2 text-right d-block">
+              <div
+                class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
+                style="position: relative; top: 3px;"
+              >
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black"
+                  ><span class="icon-menu h3"></span
+                ></a>
+              </div>
+            </div>
+          </div>
                     </div>
                 </div>
            </div>

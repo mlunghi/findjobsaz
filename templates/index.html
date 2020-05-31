@@ -22,6 +22,10 @@
             <link rel="stylesheet" href="../static/assets/css/slick.css">
             <link rel="stylesheet" href="../static/assets/css/nice-select.css">
             <link rel="stylesheet" href="../static/assets/css/style.css">
+            <!-- TO ADD -->
+            <link rel="stylesheet" href="../static/css/login-register.css" />
+            <script src="../static/js/login-register.js" type="text/javascript"></script>
+
    </head>
 
    <body>
@@ -52,7 +56,7 @@
                         <div  class="col-lg-9 col-md-9">
                             <div>
                             </div>
-                            <div style="padding-left: 50%" class="menu-wrapper">
+                            <div style="padding-left: 12%" class="menu-wrapper">
                                 <!-- Main-menu -->
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
@@ -61,6 +65,37 @@
                                             <li><a href="/jobs">browse jobs</a></li>
                                             <li><a href="/postjob">post jobs</a></li>
                                             <li><a href="/about">about</a></li>
+                                            {% if current_user.is_authenticated %} {% else %}
+                                            <li>
+                                              <a
+                                              data-toggle="modal"
+                                              href="javascript:void(0)"
+                                              onclick="openRegisterModal();"
+                                              id="Reg"
+                                              ><span class="rounded bg-primary py-2 px-3 text-white"
+                                              >Company Register</span
+                                              ></a
+                                              >
+                                            </li>
+                                            {% endif %} {% if current_user.is_authenticated %}
+                                            <a href="/logout" id="Log">
+                                              <span class="rounded bg-dark py-2 px-3 text-white"
+                                              >Logout</span
+                                              >
+                                            </a>
+                                            {% else %}
+                                            <a
+                                            data-toggle="modal"
+                                            href="javascript:void(0)"
+                                            onclick="openLoginModal();"
+                                            id="Log"
+                                            >
+                                            <span class="rounded bg-dark py-2 px-3 text-white"
+                                            >Company Login</span
+                                            >
+                                            {% endif %}</a
+                                            >
+                                          </ul>
                                         </ul>
                                     </nav>
                                 </div>
@@ -70,12 +105,130 @@
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
+                        <div class="col-6 col-xl-2 text-right d-block">
+              <div
+                class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
+                style="position: relative; top: 3px;"
+              >
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black"
+                  ><span class="icon-menu h3"></span
+                ></a>
+              </div>
+            </div>
+          </div>
                     </div>
                 </div>
            </div>
        </div>
         <!-- Header End -->
     </header>
+    <div class="modal fade login" id="loginModal">
+        <div class="modal-dialog login animated">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-hidden="true"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="box">
+                <div class="content">
+                  <div class="error"></div>
+                  <div class="form loginBox">
+                    {% if current_user.is_authenticated %} {% else %}
+                    <form
+                      method="POST"
+                      html="{:multipart=>true}"
+                      data-remote="true"
+                      action="/login"
+                      accept-charset="UTF-8"
+                      id="loginForm"
+                    >
+                      {% endif %}
+                      <input
+                        id="emailLog"
+                        class="form-control"
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                      />
+                      <input
+                        id="passwordLog"
+                        class="form-control"
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                      />
+                      <input
+                        class="btn btn-default btn-login"
+                        value="Login"
+                        onclick="loginAjax()"
+                      />
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="box">
+                <div class="content registerBox" style="display: none;">
+                  <span></span>
+                  <div class="form">
+                    <form
+                      id="registerForm"
+                      method="POST"
+                      html="{:multipart=>true}"
+                      data-remote="true"
+                      action="/register"
+                      accept-charset="UTF-8"
+                    >
+
+                      <input
+                        id="zipCodeRegister"
+                        class="form-control"
+                        type="text"
+                        placeholder="Company Name"
+                        name="ZipCode"
+                        />
+                      <input
+                        id="emailRegister"
+                        class="form-control"
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                      />
+
+                      <input
+                        id="passwordRegister"
+                        class="form-control"
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                      />
+                      <input
+                        id="password_confirmationRegister"
+                        class="form-control"
+                        type="password"
+                        placeholder="Repeat Password"
+                        name="password_confirmation"
+                      />
+                      <input
+                        class="btn btn-default btn-register"
+                        value="Create account"
+                        name="commit"
+                        onclick="registerAjax()"
+                      />
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <main>
 
         <!-- slider Area Start-->
