@@ -16,6 +16,7 @@ from wtforms import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 import databaseSetup
+import dbManage
 from users import User
 
 client = MongoClient('localhost', port=27017)
@@ -31,10 +32,24 @@ Bootstrap(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'  # route or function where login occurs...
 
+@app.route('/jobRegistration', methods=['POST'])
+def jobRegistration():
+    title = request.form['title']
+    description = request.form['description']
+    toAdd = {
+        "title": title,
+        "description": description
+    }
+    dbManage.addTofeed(toAdd)
+    return redirect("/jobs")
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
+
+@app.login_manager.unauthorized_handler
+def unauth_handler():
+    return (render_template("error.html", user=current_user))
 
 
 @app.route('/', methods=['GET'])
@@ -42,6 +57,10 @@ def home():
     print(current_user.is_authenticated)
     return(render_template("index.html", user=current_user))
 
+@app.route('/newpost')
+@login_required
+def newPost():
+    return render_template("new-post.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

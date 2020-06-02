@@ -22,6 +22,7 @@
             <link rel="stylesheet" href="../static/assets/css/slick.css">
             <link rel="stylesheet" href="../static/assets/css/nice-select.css">
             <link rel="stylesheet" href="../static/assets/css/style.css">
+
    </head>
 
    <body>
@@ -36,7 +37,6 @@
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
        <div class="header-area header-transparrent">
@@ -59,39 +59,16 @@
                                         <ul id="navigation">
                                             <li><a href="/index">home</a></li>
                                             <li><a href="/jobs">browse jobs</a></li>
-                                            <li><a href="/postjob">post jobs</a></li>
+                                            <li><a href="/newpost">post job</a></li>
                                             <li><a href="/about">about</a></li>
-                                            {% if current_user.is_authenticated %} {% else %}
                                             <li>
                                               <a
-                                              data-toggle="modal"
-                                              href="javascript:void(0)"
-                                              onclick="openRegisterModal();"
-                                              id="Reg"
+                                              href="/index"
                                               ><span class="rounded bg-primary py-2 px-3 text-white"
-                                              >Company Register</span
+                                              >Return to Register/Login Page</span
                                               ></a
                                               >
                                             </li>
-                                            {% endif %} {% if current_user.is_authenticated %}
-                                            <a href="/logout" id="Log">
-                                              <span class="rounded bg-dark py-2 px-3 text-white"
-                                              >Logout</span
-                                              >
-                                            </a>
-                                            {% else %}
-                                            <a
-                                            data-toggle="modal"
-                                            href="javascript:void(0)"
-                                            onclick="openLoginModal();"
-                                            id="Log"
-                                            >
-                                            <span class="rounded bg-dark py-2 px-3 text-white"
-                                            >Company Login</span
-                                            >
-                                            {% endif %}</a
-                                            >
-                                          </ul>
                                         </ul>
                                     </nav>
                                 </div>
@@ -124,161 +101,86 @@
 
             <h2>Find the perfect job for you</h2>
         </div>
-        <div style="padding-left: 20%; padding-top: 0%" class="job-listing-area pt-120 pb-120">
-            <div class="container">
-                <div class="row">
+        <div>
+          <div>
+            <div style="margin-left: 27%" class="container">
+              <div class="row justify-content-start text-left mb-5">
 
-                    <!-- Right content -->
-                    <div class="col-xl-9 col-lg-9 col-md-8">
-                        <!-- Featured_job_start -->
-                        <section class="featured-job-area">
-                            <div class="container">
-                                <!-- Count of Job list Start -->
-                                <!-- <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="count-job mb-35">
-                                            <span>39, 782 Jobs found</span>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <!-- Count of Job list End -->
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="../static/assets/img/icon/job-list2.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Software Engineer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Startup</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Baku, Azerbaijan</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="/singlejob">Job Description</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="../static/assets/img/icon/job-list3.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Social Media</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Baku, Azerbaijan</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="/singlejob">Job Description</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="../static/assets/img/icon/job-list4.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Financial Analyst</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Bank</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Baku, Azerbaijan</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="/singlejob">Job Description</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="../static/assets/img/icon/job-list1.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Restaurant</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Baku, Azerbaijan</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="/singlejob">Job Description</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="../static/assets/img/icon/job-list3.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Head Engineer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Ferrari</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Baku, Azerbaijan</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="/singlejob">Job Description</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="../static/assets/img/icon/job-list4.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Interior Designer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Lamborghini</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Baku, Azerbaijan</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="/singlejob">Job Description</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- Featured_job_end -->
+              </div>
+              {% if posts|length > 0 %} {% for post in posts %}
+              <div class="row" data-aos="fade">
+                <div class="col-md-12">
+                  <div
+                    class="job-post-item bg-white p-4 d-block d-md-flex align-items-center"
+                  >
+                    <div class="mb-4 mb-md-0 mr-5">
+                      <div class="job-post-item-header d-flex align-items-center">
+                        <h2 class="mr-3 text-black h4">{{ post.title }}</h2>
+                        <div class="badge-wrap">
+                          <span class="bg-primary text-white badge py-2 px-4"
+                            >Partime</span
+                          >
+                        </div>
+                      </div>
+                      <div class="job-post-item-body d-block d-md-flex">
+                        <div class="mr-3">
+                          <span class="fl-bigmug-line-portfolio23"></span>
+                          <a href="#">Facebook, Inc.</a>
+                        </div>
+                        <div>
+                          <span class="fl-bigmug-line-big104"></span>
+                          <span>Distance from you: {{ distance[loop.index0]}} miles</span>
+                        </div>
+                      </div>
                     </div>
+
+                    <div class="ml-auto">
+                      <a
+                        href="#"
+                        class="btn btn-secondary rounded-circle btn-favorite text-gray-500"
+                        ><span class="icon-heart"></span
+                      ></a>
+                      <a href="/apply?id={{post._id}}" class="btn btn-primary py-2"
+                        >Apply Job</a
+                      >
+                    </div>
+                  </div>
                 </div>
+              </div>
+              {% endfor %}
+              <div class="row mt-5">
+                <div class="col-md-12 text-center">
+                  <div class="site-block-27">
+                    <ul>
+                      <li>
+                        <a href="#"><i class="icon-keyboard_arrow_left h5"></i></a>
+                      </li>
+                      <li class="active"><span>1</span></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li>
+                        <a href="#"><i class="icon-keyboard_arrow_right h5"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {% else %}
+              <div style="margin-left: -0.5%">
+              <h4>No jobs have been posted in your city. Check back in soon!</h4>
+              </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              {% endif %}
+            </div>
+          </div>
+
             </div>
         </div>
         <!-- Job List Area End -->
@@ -362,6 +264,7 @@
 	<!-- JS here -->
 
 		<!-- All JS Custom Plugins Link Here here -->
+
         <script src="../static/./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="../static/./assets/js/vendor/jquery-1.12.4.min.js"></script>
