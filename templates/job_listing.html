@@ -22,6 +22,7 @@
             <link rel="stylesheet" href="../static/assets/css/slick.css">
             <link rel="stylesheet" href="../static/assets/css/nice-select.css">
             <link rel="stylesheet" href="../static/assets/css/style.css">
+            <link rel="stylesheet" href="../static/css/style.css" />
 
    </head>
 
@@ -101,109 +102,71 @@
 
             <h2>Find the perfect job for you</h2>
         </div>
-        <div>
-          <div>
-            <div style="margin-left: 27%" class="container">
-              <div class="row justify-content-start text-left mb-5">
+        <div class="site-section bg-light">
+          <div class="container">
+            <div class="row justify-content-start text-left mb-5">
+              <div class="col-md-9" data-aos="fade">
+                <h2 class="font-weight-bold text-black">Recent Jobs</h2>
+              </div>
 
+              <div class="col-md-3" data-aos="fade" data-aos-delay="200">
+                {% if current_user.is_authenticated %}
+                <a href="/newpost" class="btn btn-primary py-3 btn-block"
+                  ><span class="h5">+</span> Post a Job</a
+                >{% else %}
+                <a href="#" class="btn btn-primary py-3 btn-block"
+                  ><span class="h5">+</span> Login now to post a job</a
+                >
+                {% endif %}
               </div>
-              {% if posts|length > 0 %} {% for post in posts %}
-              <div class="row" data-aos="fade">
-                <div class="col-md-12">
-                  <div
-                    class="job-post-item bg-white p-4 d-block d-md-flex align-items-center"
-                  >
-                    <div class="mb-4 mb-md-0 mr-5">
-                      <div class="job-post-item-header d-flex align-items-center">
-                        <h2 class="mr-3 text-black h4">{{ post.title }}</h2>
-                        <div class="badge-wrap">
-                          <span class="bg-primary text-white badge py-2 px-4"
-                            >Partime</span
-                          >
-                        </div>
-                      </div>
-                      <div class="job-post-item-body d-block d-md-flex">
-                        <div class="mr-3">
-                          <span class="fl-bigmug-line-portfolio23"></span>
-                          <a href="#">Facebook, Inc.</a>
-                        </div>
-                        <div>
-                          <span class="fl-bigmug-line-big104"></span>
-                          <span>Distance from you: {{ distance[loop.index0]}} miles</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="ml-auto">
-                      <a
-                        href="#"
-                        class="btn btn-secondary rounded-circle btn-favorite text-gray-500"
-                        ><span class="icon-heart"></span
-                      ></a>
-                      <a href="/apply?id={{post._id}}" class="btn btn-primary py-2"
-                        >Apply Job</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% endfor %}
-              <div class="row mt-5">
-                <div class="col-md-12 text-center">
-                  <div class="site-block-27">
-                    <ul>
-                      <li>
-                        <a href="#"><i class="icon-keyboard_arrow_left h5"></i></a>
-                      </li>
-                      <li class="active"><span>1</span></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li>
-                        <a href="#"><i class="icon-keyboard_arrow_right h5"></i></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              {% else %}
-              <div style="margin-left: -0.5%">
-              <h4>No jobs have been posted in your city. Check back in soon!</h4>
-              </div>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              {% endif %}
             </div>
+            {% if posts|length > 0 %} {% for post in posts %}
+            <div class="row" data-aos="fade">
+              <div class="col-md-12">
+                <div
+                  class="job-post-item bg-white p-4 d-block d-md-flex align-items-center"
+                >
+                  <div class="mb-4 mb-md-0 mr-5">
+                    <div class="job-post-item-header d-flex align-items-center">
+                      <h2 class="mr-3 text-black h4">{{ post.title }}</h2>
+                      <div class="badge-wrap">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ml-auto">
+                    <a href="/apply?id={{post._id}}" class="btn btn-primary"
+                      >Job Description</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="row mt-5">
+              <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                  <ul>
+                    <li>
+                      <a href="#"><i class="icon-keyboard_arrow_left h5"></i></a>
+                    </li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                      <a href="#"><i class="icon-keyboard_arrow_right h5"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            {% else %}
+            <h4>No Jobs posted in your area! Post a job to get started!</h4>
+            {% endif %}
           </div>
-
-            </div>
         </div>
-        <!-- Job List Area End -->
-        <!-- Pagination Start  -->
-        <!-- <div class="pagination-area pb-115 text-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="single-wrap d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!--Pagination End  -->
 
     </main>
     <footer>

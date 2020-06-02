@@ -22,6 +22,7 @@ from users import User
 client = MongoClient('localhost', port=27017)
 
 db = client['mainDB']
+feed = db["feed"]
 
 app = Flask(__name__)
 
@@ -54,7 +55,6 @@ def unauth_handler():
 
 @app.route('/', methods=['GET'])
 def home():
-    print(current_user.is_authenticated)
     return(render_template("index.html", user=current_user))
 
 @app.route('/newpost')
@@ -67,8 +67,6 @@ def register():
 
     # force logout
     # logout_user()
-    print("hello")
-    print(request.form)
     email = request.form['email']
     password = request.form['password']
     location = request.form['ZipCode']
@@ -115,9 +113,13 @@ def index():
 def index2():
     return render_template('index.html')
 
-@app.route('/jobs')
+@app.route("/jobs")
 def jobs():
-    return render_template('job_listing.html')
+    all_feed = feed.find({})
+    result = []
+    for i in range(all_feed.count()):
+        result.append(all_feed[i])
+    return(render_template("job_listing.html", posts=result))
 
 @app.route('/about')
 def about():
