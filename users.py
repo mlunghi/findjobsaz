@@ -43,6 +43,12 @@ class User(UserMixin):
     def get_id(self):
         return str(self._id)  # reuse MongoDB id
 
+    def getEmail(self):
+        return str(self.email)
+
+    def getName(self):
+        return str(self.location)
+
     def query(key):
         # pass in email or name as key
         print("reached")

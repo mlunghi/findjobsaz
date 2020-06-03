@@ -33,13 +33,16 @@ Bootstrap(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'  # route or function where login occurs...
 
+@login_manager.user_loader
 @app.route('/jobRegistration', methods=['POST'])
 def jobRegistration():
     title = request.form['title']
     description = request.form['description']
     toAdd = {
         "title": title,
-        "description": description
+        "description": description,
+        "name": current_user.getName(),
+        "email": current_user.getEmail()
     }
     dbManage.addTofeed(toAdd)
     return redirect("/jobs")

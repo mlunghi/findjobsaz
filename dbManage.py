@@ -22,6 +22,5 @@ db = client['mainDB']
 feed = db["feed"]
 users = db["users"]
 
-
 def addTofeed(toAdd):
     feed.insert_one(toAdd)
