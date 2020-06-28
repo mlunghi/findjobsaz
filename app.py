@@ -38,11 +38,15 @@ login_manager.login_view = 'login'  # route or function where login occurs...
 def jobRegistration():
     title = request.form['title']
     description = request.form['description']
+    location = request.form['location']
+    type = request.form['typeoptions']
     toAdd = {
         "title": title,
         "description": description,
         "name": current_user.getName(),
-        "email": current_user.getEmail()
+        "email": current_user.getEmail(),
+        "location" : location,
+        "type" : type,
     }
     dbManage.addTofeed(toAdd)
     return redirect("/jobs")
