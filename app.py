@@ -136,9 +136,11 @@ def about():
 def postjob():
     return render_template('postjob.html')
 
-@app.route('/singlejob')
+@app.route('/jobdescription')
 def singlejob():
-    return render_template('job_details.html')
+    id = request.args.get('id')
+    selected_job = feed.find_one({"_id" : ObjectId(id)})
+    return render_template('job_description.html', selectedinfo=selected_job)
 
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True
