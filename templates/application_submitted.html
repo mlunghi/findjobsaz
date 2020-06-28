@@ -12,9 +12,9 @@
 		<!-- CSS here -->
             <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
             <link rel="stylesheet" href="../static/assets/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="../static/assets/css/price_rangs.css">
             <link rel="stylesheet" href="../static/assets/css/flaticon.css">
             <link rel="stylesheet" href="../static/assets/css/slicknav.css">
-            <link rel="stylesheet" href="../static/assets/css/price_rangs.css">
             <link rel="stylesheet" href="../static/assets/css/animate.min.css">
             <link rel="stylesheet" href="../static/assets/css/magnific-popup.css">
             <link rel="stylesheet" href="../static/assets/css/fontawesome-all.min.css">
@@ -22,7 +22,9 @@
             <link rel="stylesheet" href="../static/assets/css/slick.css">
             <link rel="stylesheet" href="../static/assets/css/nice-select.css">
             <link rel="stylesheet" href="../static/assets/css/style.css">
+
    </head>
+
    <body>
     <!-- Preloader Start -->
     <div id="preloader-active">
@@ -35,7 +37,6 @@
             </div>
         </div>
     </div>
-    <!-- Preloader Start -->
     <header>
         <!-- Header Start -->
        <div class="header-area header-transparrent">
@@ -51,15 +52,23 @@
                         <div  class="col-lg-9 col-md-9">
                             <div>
                             </div>
-                            <div style="padding-left: 50%" class="menu-wrapper">
+                            <div style="padding-left: 12%" class="menu-wrapper">
                                 <!-- Main-menu -->
                                 <div class="main-menu">
                                     <nav class="d-none d-lg-block">
                                         <ul id="navigation">
                                             <li><a href="/index">home</a></li>
                                             <li><a href="/jobs">browse jobs</a></li>
-                                            <li><a href="/postjob">post jobs</a></li>
+                                            <li><a href="/newpost">post job</a></li>
                                             <li><a href="/about">about</a></li>
+                                            <li>
+                                              <a
+                                              href="/jobs"
+                                              ><span class="rounded bg-primary py-2 px-3 text-white"
+                                              >Apply to More Jobs.</span
+                                              ></a
+                                              >
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -69,6 +78,17 @@
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>
+                        <div class="col-6 col-xl-2 text-right d-block">
+              <div
+                class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
+                style="position: relative; top: 3px;"
+              >
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black"
+                  ><span class="icon-menu h3"></span
+                ></a>
+              </div>
+            </div>
+          </div>
                     </div>
                 </div>
            </div>
@@ -76,150 +96,23 @@
         <!-- Header End -->
     </header>
     <main>
+        <!-- Job List Area Start -->
+        <div style="padding-top: 5%" class="section-tittle text-center">
 
-        <!-- Hero Area End -->
-        <!-- job post company Start -->
-        <div class="job-post-company pt-120 pb-120">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <!-- Left Content -->
-                    <div class="col-xl-7 col-lg-8">
-                        <!-- job single -->
-                        <div style="margin-left: -5%" class="single-job-items mb-50">
-                            <div class="job-items">
-                                <!-- <div class="company-img company-img-details">
-                                    <a href="#"><img src="../static/assets/img/icon/job-list1.png" alt=""></a>
-                                </div> -->
-                                <div class="job-tittle">
-                                    <a href="#">
-                                        <h1>{{selectedinfo.title}}, {{selectedinfo.name}}</h1>
-                                    </a>
-                                    <ul>
-                                        <li><i class="fas fa-map-marker-alt"></i>{{selectedinfo.location}}</li>
-                                        <li><i class="fas fa-clock"></i>{{selectedinfo.type}}</li>
-                                        <!-- <li>$3500 - $4000</li> add salary here-->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                          <!-- job single End -->
-
-                        <div class="job-post-details">
-                            <div class="post-details1 mb-50">
-                                <!-- Small Section Tittle -->
-                                <div style="margin-left:-1%">
-                                  <div class="small-section-tittle">
-                                    <h2>Job Description</h2>
-                                  </div>
-                                  <p>{{selectedinfo.description}}</p>
-                                </div>
-                            </div>
-                            <!-- <div class="post-details2  mb-50">
-                                 <!-- Small Section Tittle -->
-                                <!-- <div class="small-section-tittle">
-                                    <h4>Required Knowledge, Skills, and Abilities</h4>
-                                </div>
-                               <ul>
-                                   <li>System Software Development</li>
-                                   <li>Mobile Applicationin iOS/Android/Tizen or other platform</li>
-                                   <li>Research and code , libraries, APIs and frameworks</li>
-                                   <li>Strong knowledge on software development life cycle</li>
-                                   <li>Strong problem solving and debugging skills</li>
-                               </ul>
-                            </div> -->
-                        </div>
-
-                    </div>
-                    <!-- Right Content -->
-                    <div class="apply-btn2">
-                      <button
-                      type="button"
-                      data-toggle="modal"
-                      data-target="#ModalApply"
-                      >
-                       <a href="#" class="btn">Apply Now</a>
-                     </button>
-                    </div>
-                </div>
-            </div>
+            <h2>Congratulations!</h2>
+            <h3>Your application is on its way.</h3>
         </div>
-        <!-- job post company End -->
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </main>
-    <!-- Modal -->
-      <div
-        class="modal fade"
-        id="ModalApply"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                Complete Application
-              </h5>
-
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <div class="modal-body">
-              <form action="/submitApplication" method='POST' enctype="multipart/form-data">
-                <div class="form-row">
-
-                  <br/>
-
-                  <!-- Used to display Element errors. -->
-                  <br />
-                  <label>Message to the Hiring Manager</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="message"
-                    id="message"
-                    aria-describedby="messagehelp"
-                    placeholder="I am a great fit because..."
-                  />
-                  <br/>
-                  <br/>
-                  <br/>
-                  <label>Upload Your Resume</label>
-                  <input
-                    type="file"
-                    name="resume"
-                    id="resume"
-                  />
-                  <br/>
-                  <br/>
-                  <br/>
-                  <!-- <small id="emailHelp" class="form-text text-muted"
-                    >We'll never share your email with anyone else.</small
-                  > -->
-                </div>
-
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">
-                    Submit Application
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    <!-- End Modal -->
     <footer>
         <!-- Footer Start-->
-       <div style="padding-top: 5%" class="footer-area footer-bg">
+        <div style="padding-top: 5%" class="footer-area footer-bg">
             <div class="container">
                 <div class="row d-flex justify-content-between">
 
@@ -275,6 +168,7 @@
 	<!-- JS here -->
 
 		<!-- All JS Custom Plugins Link Here here -->
+
         <script src="../static/./assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="../static/./assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -283,11 +177,10 @@
 	    <!-- Jquery Mobile Menu -->
         <script src="../static/./assets/js/jquery.slicknav.min.js"></script>
 
-		<!-- Jquery Slick , Owl-Carousel Plugins -->
+		<!-- Jquery Slick , Owl-Carousel Range -->
         <script src="../static/./assets/js/owl.carousel.min.js"></script>
         <script src="../static/./assets/js/slick.min.js"></script>
         <script src="../static/./assets/js/price_rangs.js"></script>
-
 		<!-- One Page, Animated-HeadLin -->
         <script src="../static/./assets/js/wow.min.js"></script>
 		<script src="../static/./assets/js/animated.headline.js"></script>

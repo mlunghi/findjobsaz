@@ -14,6 +14,7 @@ from pymongo import MongoClient
 from werkzeug.security import check_password_hash, generate_password_hash
 from wtforms import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
+from flask_mail import Mail, Message
 
 import databaseSetup
 import dbManage
@@ -141,6 +142,18 @@ def singlejob():
     id = request.args.get('id')
     selected_job = feed.find_one({"_id" : ObjectId(id)})
     return render_template('job_description.html', selectedinfo=selected_job)
+
+@app.route('/submitApplication', methods=['POST', 'GET'])
+def submitApplication():
+    message = request.form['message']
+    resume = request.files["resume"]
+    toUs = Message("Confirmation of Essay Read from Student",
+                   sender="collegebossinfo@gmail.com",
+                   recipients=["hossam_zaki@brown.edu",
+                               "matteo_lunghi@brown.edu"],
+                   body=f"{email} just got an essay read at " + now.isoformat() + ". You'll be expecting an essay from them soon")
+    mail.send(toUs)
+    return render_template('application_submitted.html')
 
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True
