@@ -1,5 +1,6 @@
 import json
 import os
+import _io
 from datetime import datetime
 
 from bson.objectid import ObjectId
@@ -27,12 +28,22 @@ feed = db["feed"]
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = "blah vlah"
+mail_settings = {
+    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_PORT": 465,
+    "MAIL_USE_TLS": False,
+    "MAIL_USE_SSL": True,
+    "MAIL_USERNAME" : '',
+    "MAIL_PASSWORD" : ''}
+
+app.config.update(mail_settings)
+mail = Mail(app)
 
 Bootstrap(app)
 
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'  # route or function where login occurs...
+
 
 @login_manager.user_loader
 @app.route('/jobRegistration', methods=['POST'])
@@ -143,15 +154,17 @@ def singlejob():
     selected_job = feed.find_one({"_id" : ObjectId(id)})
     return render_template('job_description.html', selectedinfo=selected_job)
 
+
 @app.route('/submitApplication', methods=['POST', 'GET'])
 def submitApplication():
+    global mail
     message = request.form['message']
     resume = request.files["resume"]
     toUs = Message("Confirmation of Essay Read from Student",
-                   sender="collegebossinfo@gmail.com",
-                   recipients=["hossam_zaki@brown.edu",
-                               "matteo_lunghi@brown.edu"],
-                   body=f"{email} just got an essay read at " + now.isoformat() + ". You'll be expecting an essay from them soon")
+                   sender="testingjobmatch@gmail.com",
+                   recipients=["matteo_lunghi@brown.edu", "namikmuduroglu@gmail.com"],
+                   body=message)
+    toUs.attach("resume.pdf", 'pdf/text', resume.read())
     mail.send(toUs)
     return render_template('application_submitted.html')
 
