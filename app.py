@@ -33,8 +33,8 @@ mail_settings = {
     "MAIL_PORT": 465,
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME" : 'testingjobmatch@gmail.com',
-    "MAIL_PASSWORD" : 'JobMatch2020'}
+    "MAIL_USERNAME" : '',
+    "MAIL_PASSWORD" : ''}
 
 app.config.update(mail_settings)
 mail = Mail(app)
@@ -167,7 +167,7 @@ def submitApplication():
     message = "You received a new job application! \n\n Message to the hiring manager: " + messageToHiringManager + "\n\n Highest Level of Completed Education: " + education + "\n Years of Exeperience: " + experience + "\n Expected Monthly Salary: " + salary + "\n Skills: " + skills +"\n\n Find the Resume attatched below!"
     toUs = Message("Job Application",
                    sender="testingjobmatch@gmail.com",
-                   recipients=["matteo_lunghi@brown.edu", "namikmuduroglu@gmail.com"],
+                   recipients=["matteo_lunghi@brown.edu", "namikmuduroglu@gmail.com", "aliyev.fuad.99@gmail.com"],
                    body=message)
     toUs.attach("resume.pdf", 'pdf/text', resume.read())
     mail.send(toUs)
