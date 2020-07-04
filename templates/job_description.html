@@ -189,16 +189,43 @@
                     aria-describedby="messagehelp"
                     placeholder="I am a great fit because..."
                   />
-                  <br/>
-                  <br/>
-                  <br/>
-                  <label>Upload Your Resume (As a PDF)</label>
-                  <input
-                    type="file"
-                    name="resume"
-                    id="resume"
-                    onchange="showname()"
-                  />
+                  <div>
+                    <br/>
+                    <label>How Many Years of Experience Do You Have?</label>
+                    <br>
+                    <input type="number" name="experience"><br>
+                  </div>
+                  <div>
+                    <br/>
+                    <label>What is Your Expected Salary? (per month)</label>
+                    <br>
+                    <input type="input" name="salary"><br>
+                  </div>
+                  <div>
+                    <br/>
+                    <label>What Skills Do You Have? (seperated by comma)</label>
+                    <br>
+                    <input type="input" name="salary"><br>
+                  </div>
+                  <div>
+                    <br/>
+                    <label>Highest Completed Level of Education</label><br>
+                    <label><input type="radio" name="education" value="none"> Less Than High School</label><br>
+                    <label><input type="radio" name="education" value="highschool"> High School</label><br>
+                    <label><input type="radio" name="education" value="bachelor"> Bachelor's Degree</label><br>
+                    <label><input type="radio" name="education" value="masters"> Master's Degree</label><br>
+                    <label><input type="radio" name="education" value="phd"> Doctor of Philosophy</label><br>
+                  </div>
+                  <div>
+                    <br/>
+                    <label>Upload Your Resume (As a PDF)</label>
+                    <input
+                      type="file"
+                      name="resume"
+                      id="resume"
+                      onchange="showname()"
+                    />
+                  </div>
                   <br/>
                   <br/>
                   <br/>
