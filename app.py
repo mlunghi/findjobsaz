@@ -27,6 +27,8 @@ db = client['mainDB']
 feed = db["feed"]
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
+
 
 mail_settings = {
     "MAIL_SERVER": 'smtp.gmail.com',
