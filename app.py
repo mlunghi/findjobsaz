@@ -166,7 +166,7 @@ def submitApplication():
     skills = request.form['skills']
     resume = request.files["resume"]
     education = request.form['education']
-    message = "You received a new job application! \n\n Message to the hiring manager: " + messageToHiringManager + "\n\n Highest Level of Completed Education: " + education + "\n Years of Exeperience: " + experience + "\n Expected Monthly Salary: " + salary + "\n Skills: " + skills +"\n\n Find the Resume attatched below!"
+    message = "You received a new job application! \n\n Message to the hiring manager: " + messageToHiringManager + "\n\n Highest Level of Completed Education: " + education + "\n Years of Experience: " + experience + "\n Expected Monthly Salary: " + salary + "\n Skills: " + skills +"\n\n Find the Resume attatched below!"
     toUs = Message("Job Application",
                    sender="testingjobmatch@gmail.com",
                    recipients=["matteo_lunghi@brown.edu", "namikmuduroglu@gmail.com", "aliyev.fuad.99@gmail.com"],
